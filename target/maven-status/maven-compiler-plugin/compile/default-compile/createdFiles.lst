@@ -1,0 +1,6 @@
+com\example\HolaSpringApplication.class
+com\example\Servicio\IndividuoServicio.class
+com\example\Data\IndividuoDAO.class
+com\example\Dominio\Individuo.class
+com\example\web\ControladorRest.class
+com\example\Servicio\IndividuoServicioImp.class

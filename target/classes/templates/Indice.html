@@ -1,0 +1,38 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Pagina Inicio</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <header th:replace="Plantilla/Plantilla :: encabezado" ></header>
+        <a th:href="@{/anexar}"> [[#{individuo.anexar}]] </a>
+        <div th:if="${listaIndividuos != null and not #lists.isEmpty(listaIndividuos)}">
+            <table border="2">
+                <tr>
+                    <th> [[#{individuo.nombre}]] </th>
+                    <th> [[#{individuo.apellido}]] </th>
+                    <th> [[#{individuo.telefono}]] </th>
+                    <th> [[#{individuo.correo}]] </th>
+                    <th> [[#{individuo.edad}]] </th>
+                    <th> [[#{boton.modificar}]] </th>
+                    <th> [[#{boton.borrar}]] </th>
+                </tr>
+                <tr th:each="individuo : ${listaIndividuos}">
+                    <td th:text="${individuo.nombre}"></td>
+                    <td th:text="${individuo.apellido}"></td>
+                    <td th:text="${individuo.telefono}"></td>
+                    <td th:text="${individuo.correo}"></td>
+                    <td th:text="${individuo.edad}"></td>
+                    <td> <a th:href="@{/Cambiar/{idIndividuo}(idIndividuo=${individuo.idIndividuo})}" th:text="#{boton.modificar}"></a></td>
+                    <td> <a th:href="@{/Borrar/{idIndividuo}(idIndividuo=${individuo.idIndividuo})}" th:text="#{boton.borrar}"></a></td>
+
+                </tr>
+            </table>
+        </div>
+        <div th:if="${listaIndividuos == null or #lists.isEmpty(listaIndividuos)}">
+            [[#{individuo.lista-sin-datos}]]
+        </div>
+        <footer th:replace="Plantilla/Plantilla :: piepagina"></footer>
+    </body>
+</html>
+

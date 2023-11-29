@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>PlantillaTh</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <header th:fragment="encabezado">
+            <h1 th:text="#{pagina.titulo}">Control De Datos De Personas</h1>
+        </header>
+        
+        <footer th:fragment="piepagina" >
+            <div>
+                <br/>
+                <a th:href="@{/(lang=es)}"> ES</a> -
+                <a th:href="@{/(lang=en)}"> EN</a> -
+                <span> [[#{pagina.piepagina}]] <a href="https://www.linkedin.com/in/luciano-molina-/" target="_blank">linkedin</a></span>
+            </div>
+        </footer>
+    </body>
+</html>

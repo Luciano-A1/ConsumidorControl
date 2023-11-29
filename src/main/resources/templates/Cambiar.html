@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Datos del Nuevo Individuo</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+         <header th:replace="Plantilla/Plantilla :: encabezado" ></header>
+        <h2>[[#{individuo.tabla}]]</h2>
+        <a th:href="@{/}">[[#{boton.volver}]]</a>
+        <br/>
+        <form th:action="@{/salvar}" method="post" th:object="${individuo}">
+            <input type="hidden" name="idIndividuo" th:field="*{idIndividuo}"/>
+            <br/>
+            <label for="nombre">[[#{individuo.nombre}]]:</label>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <span th:if="${#fields.hasErrors('nombre')}" th:errores='*{nombre}'>[[#{NotEmpty.individuo.nombre}]]</span>
+            <br/>
+            <label for="apellido">[[#{individuo.apellido}]]:</label>
+            <input type="text" name="apellido" th:field="*{apellido}"/>
+            <span th:if="${#fields.hasErrors('apellido')}" th:errores='*{apellido}'>[[#{NotEmpty.individuo.apellido}]]</span>
+            <br/>
+            <label for="telefono">[[#{individuo.telefono}]]:</label>
+            <input type="tel" name="telefono" th:field="*{telefono}"/>
+            <span th:if="${#fields.hasErrors('telefono')}" th:errores='*{telefono}'>[[#{NotEmpty.individuo.telefono}]]</span>
+            <br/>
+            <label for="correo">[[#{individuo.correo}]]:</label>
+            <input type="email" name="correo" th:field="*{correo}"/>
+            <span th:if="${#fields.hasErrors('correo')}" th:errores='*{correo}'>[[#{Email.individuo.correo}]]</span>
+            <br/>
+            <label for="edad">[[#{individuo.edad}]]:</label>
+            <input type="number" name="edad" th:field="*{edad}"/>
+            <span th:if="${#fields.hasErrors('edad')}" th:errores='*{edad}'>[[#{NotNull.individuo.edad}]]</span>
+            <br/>
+            <input type="submit" name="salvar" th:value="#{boton.guardad}"/>
+        </form>
+        <footer th:replace="Plantilla/Plantilla :: piepagina"></footer>
+    </body>
+</html>
+
+
